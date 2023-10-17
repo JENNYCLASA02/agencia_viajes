@@ -6,16 +6,16 @@ class Usuario(db.Model):
     id = db.Column(db.Integer, primary_key =True)
     nombre_usuario = db.Column(db.String(50))
     correo = db.Column(db.String(50))
-    contraseña = db.Column(db.String(50))
+    contrasena = db.Column(db.String(50))
     
-    def _init_(self,nombre_usuario, correo, contraseña) :
+    def _init_(self,nombre_usuario, correo, contrasena) :
        self.nombre_usuario = nombre_usuario
        self.correo = correo
-       self.contraseña = contraseña
+       self.contrasena = contrasena
        
 with app.app_context():
     db.create_all()
 
 class UsuariosSchema(ma.Schema):
     class Meta:
-        fields = ('id','nombre_usuario','correo','contraseña')
+        fields = ('id','nombre_usuario','correo','contrasena')

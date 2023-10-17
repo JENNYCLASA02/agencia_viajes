@@ -17,8 +17,8 @@ def usuario():
 def save():
     nombre_usuario = request.json['nombre_usuario']
     correo = request.json['correo']
-    contraseña = request.json ['contraseña']
-    new_usuario = Usuario(nombre_usuario,correo,contraseña)
+    contrasena = request.json ['contrasea']
+    new_usuario = Usuario(nombre_usuario,correo,contrasena)
     db.session.add(new_usuario)
     db.session.commit()    
     return "los datos han sido guardado con exito"
@@ -28,13 +28,13 @@ def Update():
     id = request.json['id']
     nombre_usuario = request.json['nombre_usuario']
     correo = request.json['correo']
-    contraseña = request.json ['contraseña']
+    contrasena = request.json ['contrasena']
     usuario = Usuario.query.get(id)   
     if usuario :
         print(usuario) 
         usuario.nombre_usuario = nombre_usuario
         usuario.correo = correo
-        usuario.contraseña = contraseña
+        usuario.contrasena = contrasena
         db.session.commit()
         return "Datos actualizado con exitos"
     else:
