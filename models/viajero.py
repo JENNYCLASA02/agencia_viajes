@@ -4,7 +4,7 @@ class Viajero(db.Model):
     __tablename__ = "tblviajero"
 
     id = db.Column(db.Integer, primary_key =True)
-    id_usuario = db.Column(db.Integer, db.ForeignKey('tblusuario'))
+    id_usuario = db.Column(db.Integer, db.ForeignKey('tblusuario.id'))
     tipo_documento = db.Column(db.String(50))
     nombre = db.Column(db.String(50))
     apellido = db.Column(db.String(50))
