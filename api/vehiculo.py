@@ -15,12 +15,12 @@ def vehiculo():
 
 @ruta_vehiculos.route('/savevehiculo', methods=['POST'])
 def save():
-    nombre = request.json['nombre']
     placa = request.json ['placa']
     modelo = request.json ['modelo']
     capacidad = request.json ['capacidad']
     disponibilidad = request.json ['disponibilidad']
-    new_vehiculo = Vehiculo(nombre,placa,modelo,capacidad,disponibilidad)
+    localidad = request.json['localidad']
+    new_vehiculo = Vehiculo(placa,modelo,capacidad,disponibilidad,localidad)
     db.session.add(new_vehiculo)
     db.session.commit()    
     return "Datos guardados con éxito"
@@ -28,19 +28,19 @@ def save():
 @ruta_vehiculos.route('/updatevehiculo', methods=['PUT'])
 def Update():
     id = request.json['id']
-    nombre = request.json['nombre']
     placa = request.json ['placa']
     modelo = request.json ['modelo']
     capacidad = request.json ['capacidad']
     disponibilidad = request.json ['disponibilidad']
+    localidad = request.json['localidad']
     vehiculo = Vehiculo.query.get(id)   
     if vehiculo :
         print(vehiculo) 
-        vehiculo.nombre = nombre
         vehiculo.placa = placa 
         vehiculo.modelo = modelo
         vehiculo.capacidad = capacidad
         vehiculo.disponibilidad = disponibilidad
+        vehiculo.localidad = localidad
 
         db.session.commit()
         return "Datos actualizados con éxitos"

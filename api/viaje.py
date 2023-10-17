@@ -15,13 +15,13 @@ def viaje():
 
 @ruta_viajes.route('/saveviaje', methods=['POST'])
 def save():
-    hora_inicio = request.json['hora_inicio']
-    hora_finalizacion = request.json ['hora_finalizacion']
-    fecha = request.json ['fecha']
-    duracion = request.json ['duracion']
+    id_ruta = request.json ['id_ruta']
+    id_vehiculo= request.json ['id_vehiculo']
+    id_reporte= request.json ['id_reporte']
+    fecha_inicio = request.json['fecha_inicio']
+    fecha_finalizacion = request.json ['fecha_finalizacion']
     estado = request.json ['estado']
-    id_vehiculo = request.json ['id_vehiculo']
-    new_viaje = Viaje(hora_inicio, hora_finalizacion, fecha, duracion, estado, id_vehiculo)
+    new_viaje = Viaje(id_ruta,id_vehiculo,id_reporte,fecha_inicio,fecha_finalizacion,estado)
     db.session.add(new_viaje)
     db.session.commit()    
     return "Datos guardados con éxito"
@@ -29,21 +29,21 @@ def save():
 @ruta_viajes.route('/updateviaje', methods=['PUT'])
 def Update():
     id = request.json['id']
-    hora_inicio = request.json['hora_inicio']
-    hora_finalizacion = request.json ['hora_finalizacion']
-    fecha = request.json ['fecha']
-    duracion = request.json ['duracion']
+    id_ruta = request.json ['id_ruta']
+    id_vehiculo= request.json ['id_vehiculo']
+    id_reporte= request.json ['id_reporte']
+    fecha_inicio = request.json['fecha_inicio']
+    fecha_finalizacion = request.json ['fecha_finalizacion']
     estado = request.json ['estado']
-    id_vehiculo = request.json ['id_vehiculo']
     viaje = Viaje.query.get(id)   
     if viaje :
-        print(viaje) 
-        viaje.hora_inicio = hora_inicio
-        viaje.hora_finalizacion = hora_finalizacion
-        viaje.fecha = fecha
-        viaje.duracion = duracion
-        viaje.estado = estado
+        print(viaje)
+        viaje.id_ruta = id_ruta
         viaje.id_vehiculo = id_vehiculo
+        viaje.id_reporte = id_reporte
+        viaje.fecha_inicio = fecha_inicio
+        viaje.fecha_finalizacion = fecha_finalizacion
+        viaje.estado = estado
         db.session.commit()
         return "Datos actualizados con éxitos"
     else:
