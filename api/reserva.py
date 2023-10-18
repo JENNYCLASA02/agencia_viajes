@@ -61,7 +61,7 @@ def Update():
     else:
         return "Error"
 
-@ruta_reservas.route('/deletereserva/<id>', methods=['GET'])
+@ruta_reservas.route('/deletereserva/<id>', methods=['DELETE'])
 def eliminar(id):
     reserva = Reserva.query.get(id)
     db.session.delete(reserva)

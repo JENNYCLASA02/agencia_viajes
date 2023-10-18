@@ -6,7 +6,7 @@ class Conductor(db.Model):
     id = db.Column(db.Integer, primary_key =True)
     nombre = db.Column(db.String(50))
     apellido = db.Column(db.String(50))
-    numero = db.Column(db.Integer)
+    numero = db.Column(db.String(50))
     experiencia = db.Column(db.String(50))
 
     def __init__(self, nombre, apellido, numero, experiencia) :

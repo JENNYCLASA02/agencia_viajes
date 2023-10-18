@@ -16,10 +16,7 @@ def scale():
 @ruta_reportes.route('/savereporte', methods=['POST'])
 def save():
     fecha_creacion = request.json['fecha_creacion']
-    descripcion = request.json['descripcion']
-    itinerario_det = request.json['itinerario_det']
-    ingresos = request.json['ingresos']
-    new_reporte = Reporte(fecha_creacion,descripcion,itinerario_det,ingresos)
+    new_reporte = Reporte(fecha_creacion)
     db.session.add(new_reporte)
     db.session.commit()    
     return "los datos han sido guardado con exito"
@@ -28,16 +25,10 @@ def save():
 def Update():
     id = request.json['id']
     fecha_creacion = request.json['fecha_creacion']
-    descripcion = request.json['descripcion']
-    itinerario_det = request.json['itinerario_det']
-    ingresos = request.json['ingresos']
     reporte = Reporte.query.get(id)   
     if reporte :
         print(reporte) 
         reporte.fecha_creacion = fecha_creacion
-        reporte.descripcion = descripcion
-        reporte.itinerario_det = itinerario_det
-        reporte.ingresos = ingresos
         db.session.commit()
         return "Datos actualizado con exitos"
     else:

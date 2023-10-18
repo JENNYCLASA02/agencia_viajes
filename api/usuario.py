@@ -15,10 +15,10 @@ def usuario():
 
 @ruta_usuarios.route('/saveusuario', methods=['POST'])
 def save():
-    nombreusuario = request.json['nombre_usuario']
+    nombreusuario = request.json['nombreusuario']
     correo = request.json['correo']
-    contrasena = request.json ['contrasea']
-    new_usuario = Usuario(nombreusuario,correo,contrasena)
+    contrasena = request.json ['contrasena']
+    new_usuario = Usuario(nombreusuario, correo, contrasena)
     db.session.add(new_usuario)
     db.session.commit()    
     return "los datos han sido guardado con exito"
@@ -26,7 +26,7 @@ def save():
 @ruta_usuarios.route('/updateusuario', methods=['PUT'])
 def Update():
     id = request.json['id']
-    nombreusuario = request.json['nombre_usuario']
+    nombreusuario = request.json['nombreusuario']
     correo = request.json['correo']
     contrasena = request.json ['contrasena']
     usuario = Usuario.query.get(id)   

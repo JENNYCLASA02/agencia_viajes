@@ -17,11 +17,10 @@ def viaje():
 def save():
     id_ruta = request.json ['id_ruta']
     id_vehiculo= request.json ['id_vehiculo']
-    id_reporte= request.json ['id_reporte']
     fecha_inicio = request.json['fecha_inicio']
     fecha_finalizacion = request.json ['fecha_finalizacion']
     estado = request.json ['estado']
-    new_viaje = Viaje(id_ruta,id_vehiculo,id_reporte,fecha_inicio,fecha_finalizacion,estado)
+    new_viaje = Viaje(id_ruta,id_vehiculo,fecha_inicio,fecha_finalizacion,estado)
     db.session.add(new_viaje)
     db.session.commit()    
     return "Datos guardados con éxito"
@@ -31,7 +30,6 @@ def Update():
     id = request.json['id']
     id_ruta = request.json ['id_ruta']
     id_vehiculo= request.json ['id_vehiculo']
-    id_reporte= request.json ['id_reporte']
     fecha_inicio = request.json['fecha_inicio']
     fecha_finalizacion = request.json ['fecha_finalizacion']
     estado = request.json ['estado']
@@ -40,7 +38,6 @@ def Update():
         print(viaje)
         viaje.id_ruta = id_ruta
         viaje.id_vehiculo = id_vehiculo
-        viaje.id_reporte = id_reporte
         viaje.fecha_inicio = fecha_inicio
         viaje.fecha_finalizacion = fecha_finalizacion
         viaje.estado = estado
@@ -49,7 +46,7 @@ def Update():
     else:
         return "Error"
 
-@ruta_viajes.route('/deleteviaje/<id>', methods=['GET'])
+@ruta_viajes.route('/deleteviaje/<id>', methods=['DELETE'])
 def eliminar(id):
     viaje = Viaje.query.get(id)
     db.session.delete(viaje)

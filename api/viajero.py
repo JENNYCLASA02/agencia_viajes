@@ -52,7 +52,7 @@ def Update():
     else:
         return "Error"
 
-@ruta_viajeros.route('/deleteviajero/<id>', methods=['GET'])
+@ruta_viajeros.route('/deleteviajero/<id>', methods=['DELETE'])
 def eliminar(id):
     viajero = Viajero.query.get(id)
     db.session.delete(viajero)

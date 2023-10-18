@@ -8,7 +8,7 @@ class Usuario(db.Model):
     correo = db.Column(db.String(50))
     contrasena = db.Column(db.String(50))
     
-    def _init_(self,nombreusuario, correo, contrasena) :
+    def __init__(self, nombreusuario, correo, contrasena) :
        self.nombreusuario = nombreusuario
        self.correo = correo
        self.contrasena = contrasena
