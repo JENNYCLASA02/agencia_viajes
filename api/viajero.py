@@ -15,14 +15,14 @@ def viajero():
 
 @ruta_viajeros.route('/saveviajero', methods=['POST'])
 def save():
-    id_usuario = request.json['id_usuario']
-    tipo_documento = request.json['tipo_documento']
+    idusuario = request.json['idusuario']
+    tipodocumento = request.json['tipodocumento']
     nombre = request.json['nombre']
     apellido = request.json['apellido'] 
     edad = request.json['edad'] 
-    num_celular = request.json['num_celular']
+    numcelular = request.json['numcelular']
     direccion = request.json['direccion'] 
-    new_viajero = Viajero(id_usuario, tipo_documento,nombre,apellido,edad,num_celular,direccion)
+    new_viajero = Viajero(idusuario, tipodocumento,nombre,apellido,edad,numcelular,direccion)
     db.session.add(new_viajero)
     db.session.commit()    
     return "Datos guardados con éxito"
@@ -30,22 +30,22 @@ def save():
 @ruta_viajeros.route('/updateviajero', methods=['PUT'])
 def Update():
     id = request.json['id']
-    id_usuario = request.json['id_usuario']
-    tipo_documento = request.json['tipo_documento']
+    idusuario = request.json['idusuario']
+    tipodocumento = request.json['tipodocumento']
     nombre = request.json['nombre']
     apellido = request.json['apellido'] 
     edad = request.json['edad'] 
-    num_celular = request.json['num_celular']
+    numcelular = request.json['numcelular']
     direccion = request.json['direccion'] 
     viajero = Viajero.query.get(id)   
     if viajero :
         print(viajero) 
-        viajero.id_usuario = id_usuario
-        viajero.tipo_documento = tipo_documento
+        viajero.idusuario = idusuario
+        viajero.tipodocumento = tipodocumento
         viajero.nombre = nombre
         viajero.apellido = apellido
         viajero.edad = edad 
-        viajero.num_celular = num_celular
+        viajero.numcelular = numcelular
         viajero.direccion = direccion
         db.session.commit()
         return "Datos actualizados con éxitos"

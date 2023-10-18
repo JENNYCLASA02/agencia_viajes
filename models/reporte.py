@@ -1,7 +1,7 @@
 from config.db import  db, ma, app
 
 class Reporte(db.Model):
-    _tablename_ = "tblreporte"
+    __tablename__ = "tblreporte"
 
     id = db.Column(db.Integer, primary_key =True)
     fecha_creacion = db.Column(db.DateTime)

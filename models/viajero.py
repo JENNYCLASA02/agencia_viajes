@@ -4,21 +4,21 @@ class Viajero(db.Model):
     __tablename__ = "tblviajero"
 
     id = db.Column(db.Integer, primary_key =True)
-    id_usuario = db.Column(db.Integer, db.ForeignKey('tblusuario.id'))
-    tipo_documento = db.Column(db.String(50))
+    idusuario = db.Column(db.Integer, db.ForeignKey('tblusuario.id'))
+    tipodocumento = db.Column(db.String(50))
     nombre = db.Column(db.String(50))
     apellido = db.Column(db.String(50))
     edad = db.Column(db.Integer)
-    num_celular = db.Column(db.Integer)
+    numcelular = db.Column(db.Integer)
     direccion = db.Column(db.String(50))
 
-    def __init__(self, id_usuario, tipo_documento, nombre, apellido, edad, num_celular, direccion) :
-       self.id_usuario = id_usuario
-       self.tipo_documento = tipo_documento
+    def __init__(self, idusuario, tipodocumento, nombre, apellido, edad, numcelular, direccion) :
+       self.idusuario = idusuario
+       self.tipodocumento = tipodocumento
        self.nombre = nombre 
        self.apellido = apellido
        self.edad = edad
-       self.num_celular = num_celular
+       self.numcelular = numcelular
        self.direccion = direccion
 
 with app.app_context():
@@ -26,4 +26,4 @@ with app.app_context():
 
 class ViajerosSchema(ma.Schema):
     class Meta:
-        fields = ('id','id_usuario','tipo_documento','nombre','apellido','edad','num_celular','direccion')
+        fields = ('id','idusuario','tipodocumento','nombre','apellido','edad','numcelular','direccion')

@@ -1,7 +1,7 @@
 from config.db import  db, ma, app
 
 class Pago(db.Model):
-    _tablename_ = "tblpago"
+    __tablename__ = "tblpago"
 
     id = db.Column(db.Integer, primary_key =True)
     metodo_pago = db.Column(db.String(50))

@@ -1,7 +1,7 @@
 from config.db import  db, ma, app
 
 class Ruta(db.Model):
-    _tablename_ = "tblruta"
+    __tablename__ = "tblruta"
 
     id = db.Column(db.Integer, primary_key =True)
     origen = db.Column(db.Integer, db.ForeignKey('tblciudad.id'))

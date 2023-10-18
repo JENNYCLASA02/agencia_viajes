@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify, json
 from config.db import db, app, ma
 from models.pago import Pago, PagosSchema
+from models.reserva import Reserva
 
 ruta_pagos = Blueprint("ruta_pago", __name__)
 
@@ -41,7 +42,6 @@ def Update():
         pago.fecha = fecha 
         pago.estado = estado
         pago.id_viajero = id_viajero
-
         db.session.commit()
         return "Datos actualizados con éxitos"
     else:
